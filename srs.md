@@ -108,3 +108,73 @@ Interfejs użytkownika ma formę responsywnej aplikacji webowej. Główny przypa
 * Integracja z systemem poczty elektronicznej (powiadomienia).
 
 ---
+## **4\. Wymagania funkcjonalne**
+
+### **4.1. Rezerwacja zasobu**
+
+**Opis:**  
+Umożliwia użytkownikowi dokonanie rezerwacji wybranego zasobu.
+
+**Historyjka użytkownika:**
+
+Jako użytkownik, chcę zarezerwować zasób na określony termin, aby móc z niego skorzystać zgodnie z planem.
+
+**Cel biznesowy:**  
+Usprawnienie zarządzania dostępnością zasobów uczelni.
+
+**Warunki wstępne:**  
+Użytkownik jest zalogowany w systemie i posiada odpowiednie uprawnienia.
+
+**Warunki końcowe:**  
+Rezerwacja zostaje zapisana i potwierdzona.
+
+**Kryteria akceptacji:**
+
+* **WF-REZ-01 (Scenariusz główny):**  
+  * Given: jestem zalogowanym użytkownikiem,  
+  * And: zasób jest dostępny w wybranym terminie,  
+  * When: potwierdzam rezerwację,  
+  * Then: rezerwacja otrzymuje status „Aktywna”.  
+* **WF-REZ-02 (Scenariusz alternatywny):**  
+  * Given: zasób jest już zarezerwowany,  
+  * When: próbuję dokonać rezerwacji,  
+  * Then: system blokuje operację i wyświetla komunikat.  
+* **WF-REZ-03 (Scenariusz wyjątkowy):**  
+  * Given: system utracił połączenie z bazą danych,  
+  * When: potwierdzam rezerwację,  
+  * Then: system informuje o błędzie i nie zapisuje rezerwacji.
+
+### **4.2. Anulowanie rezerwacji**
+
+**Historyjka użytkownika:**
+
+Jako użytkownik, chcę anulować rezerwację, aby zwolnić zasób.
+
+**Kryteria akceptacji:**
+
+* **WF-ANUL-01:**  
+  * Given: posiadam aktywną rezerwację,  
+  * When: anuluję ją,  
+  * Then: status rezerwacji zmienia się na „Anulowana”  
+  * And: zasób staje się ponownie dostępny.
+
+### **4.3. Zarządzanie zasobami (Administrator)**
+
+**Historyjka użytkownika:**
+
+Jako administrator, chcę dodawać i edytować zasoby, aby system odzwierciedlał aktualny stan infrastruktury.
+
+**Kryteria akceptacji:**
+
+* **WF-ADM-01:** Administrator może dodać nowy zasób.  
+* **WF-ADM-02:** Administrator może zablokować zasób na czas serwisu.  
+* **WF-ADM-03:** Administrator może edytować status zasobu.
+
+### **4.4. Priorytetyzacja wymagań**
+
+* Must Have: rezerwacja, anulowanie, zarządzanie zasobami.  
+* Should Have: rezerwacje cykliczne, powiadomienia e-mail.  
+* Could Have: eksport rezerwacji do kalendarza google.  
+* Won’t Have: płatności.
+
+---
