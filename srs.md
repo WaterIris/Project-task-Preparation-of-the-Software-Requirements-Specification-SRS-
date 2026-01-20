@@ -51,3 +51,43 @@ System SRZU umożliwia:
 Rozdział 2 zawiera ogólny opis systemu. Rozdział 3 opisuje interfejsy zewnętrzne. Rozdział 4 definiuje wymagania funkcjonalne wraz z kryteriami akceptacji. Rozdział 5 opisuje wymagania niefunkcjonalne. Rozdział 6 prezentuje analizę porównawczą. Dodatki zawierają modele analityczne, persony oraz otwarte kwestie.
 
 ---
+
+## **2\. Opis ogólny**
+
+### **2.1. Główne funkcje produktu**
+
+* Przegląd i filtrowanie zasobów.  
+* Rezerwacja jednorazowa i cykliczna.  
+* Anulowanie i modyfikacja rezerwacji.  
+* Blokowanie zasobów (serwis, awarie).  
+* Zarządzanie użytkownikami i uprawnieniami.
+
+### **2.2. Klasy użytkowników**
+
+* **Student** – sprzęt do celów naukowych.  
+* **Pracownik dydaktyczny** – rezerwuje sale i laboratoria na zajęcia oraz projekty.  
+* **Administrator** – zarządza zasobami, regułami i dostępnością systemu.
+
+### **2.3. Ograniczenia projektowe i implementacyjne**
+
+**Technologiczne:**
+
+* aplikacja webowa dostępna w przeglądarkach Chrome, Firefox, Edge,  
+* architektura klient–serwer.
+
+**Organizacyjne:**
+
+* realizacja projektu w czasie jednego semestru,  
+* zespół projektowy 3 osoby.
+
+**Prawne i środowiskowe:**
+
+* zgodność z RODO,  
+* zgodność z regulaminem uczelni.
+
+### **2.4. Założenia projektowe**
+
+* użytkownicy posiadają aktywne konto uczelniane,  
+* dostęp do systemu odbywa się z sieci uczelnianej lub przez VPN.
+
+---
