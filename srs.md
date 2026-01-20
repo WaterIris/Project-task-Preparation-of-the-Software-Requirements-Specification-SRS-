@@ -91,3 +91,20 @@ Rozdział 2 zawiera ogólny opis systemu. Rozdział 3 opisuje interfejsy zewnęt
 * dostęp do systemu odbywa się z sieci uczelnianej lub przez VPN.
 
 ---
+## **3\. Wymagania dotyczące interfejsów zewnętrznych**
+
+### **3.1. Interfejs użytkownika (UI)**
+
+Interfejs użytkownika ma formę responsywnej aplikacji webowej. Główny przypadek użycia obejmuje:
+
+* widok kalendarza dostępności zasobu,  
+* formularz tworzenia rezerwacji,  
+* listę własnych rezerwacji.  
+  Makiety interfejsu przygotowane są w narzędziu Figma.
+
+### **3.2. Interfejsy programowe (API)**
+
+* Integracja z uczelnianym systemem uwierzytelniania (SSO).  
+* Integracja z systemem poczty elektronicznej (powiadomienia).
+
+---
