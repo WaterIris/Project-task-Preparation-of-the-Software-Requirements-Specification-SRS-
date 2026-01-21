@@ -155,8 +155,6 @@ Zlecenie zapisane w systemie.
 
 ### **6.1. Analiza porównawcza**
 
-Proces ten pozwolił na zidentyfikowanie standardów rynkowych oraz nisz, które system Pogrzebalia powinien zagospodarować, aby uzyskać przewagę konkurencyjną.
-
 **Krok 1: Identyfikacja Konkurencji i Wzorców**
 W celu uzyskania pełnego obrazu rynku, analizie poddano trzy grupy systemów:
 * *Konkurencja bezpośrednia*: Systemy dedykowane branży funeralnej (np. Mementis, Funeral System). Skupiają się na ewidencji zgonów i druku klepsydr.
