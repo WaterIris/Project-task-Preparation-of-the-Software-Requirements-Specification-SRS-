@@ -74,124 +74,53 @@ Anna, 38 lat, pracuje w domu pogrzebowym, zależy jej na szybkim i bezbłędnym 
 ---
 ## **3\. Wymagania dotyczące interfejsów zewnętrznych**
 
-### **3.1. Interfejs użytkownika (UI)**
+### **3.1. Interfejs użytkownika**
 
-Interfejs użytkownika ma formę responsywnej aplikacji webowej. Główny przypadek użycia obejmuje:
+* Stonowana kolorystyka  
+* Intuicyjna nawigacja  
+* Responsywny design
 
-* widok kalendarza dostępności zasobu,
-* formularz tworzenia rezerwacji,
-* listę własnych rezerwacji.
-  Makiety interfejsu przygotowane są w narzędziu Figma.
+### **3.2. Interfejsy programowe**
 
-### **3.2. Interfejsy programowe (API)**
-
-* Integracja z uczelnianym systemem uwierzytelniania (SSO).
-* Integracja z systemem poczty elektronicznej (powiadomienia).
+* Integracja z systemem e-mail  
+* Integracja z systemem SMS
 
 ---
+
 ## **4\. Wymagania funkcjonalne**
 
-### **4.1. Rezerwacja zasobu**
+### **4.1. Zarządzanie zleceniem pogrzebowym**
 
-**Opis:**
-Umożliwia użytkownikowi dokonanie rezerwacji wybranego zasobu.
+**Opis:**  
+Umożliwia rejestrację i obsługę zlecenia pogrzebowego.
 
-**Historyjka użytkownika:**
+**Historyjka użytkownika:**  
+Jako pracownik biura,chcę dodać nowe zlecenie pogrzebowe,aby móc rozpocząć proces organizacji ceremonii.
 
-Jako użytkownik, chcę zarezerwować zasób na określony termin, aby móc z niego skorzystać zgodnie z planem.
+**Cel biznesowy:**  
+Ustandaryzowanie i klasyfikacja obsługi zleceń.
 
-**Cel biznesowy:**
-Usprawnienie zarządzania dostępnością zasobów uczelni.
+**Warunki wstępne:**  
+Użytkownik zalogowany jako pracownik biura.
 
-**Warunki wstępne:**
-Użytkownik jest zalogowany w systemie i posiada odpowiednie uprawnienia.
-
-**Warunki końcowe:**
-Rezerwacja zostaje zapisana i potwierdzona.
-
-**Kryteria akceptacji:**
-
-* **WF-REZ-01 (Scenariusz główny):**
-  * Given: jestem zalogowanym użytkownikiem,
-  * And: zasób jest dostępny w wybranym terminie,
-  * When: potwierdzam rezerwację,
-  * Then: rezerwacja otrzymuje status „Aktywna”.
-* **WF-REZ-02 (Scenariusz alternatywny):**
-  * Given: zasób jest już zarezerwowany,
-  * When: próbuję dokonać rezerwacji,
-  * Then: system blokuje operację i wyświetla komunikat.
-* **WF-REZ-03 (Scenariusz wyjątkowy):**
-  * Given: system utracił połączenie z bazą danych,
-  * When: potwierdzam rezerwację,
-  * Then: system informuje o błędzie i nie zapisuje rezerwacji.
-
-### **4.2. Anulowanie rezerwacji**
-
-**Historyjka użytkownika:**
-
-Jako użytkownik, chcę anulować rezerwację, aby zwolnić zasób.
+**Warunki końcowe:**  
+Zlecenie zapisane w systemie.
 
 **Kryteria akceptacji:**
 
-* **WF-ANUL-01:**
-  * Given: posiadam aktywną rezerwację,
-  * When: anuluję ją,
-  * Then: status rezerwacji zmienia się na „Anulowana”
-  * And: zasób staje się ponownie dostępny.
+* **WF-ZL-01 (Scenariusz główny)**  
+  * Given: Jestem zalogowany jako pracownik biura  
+  * When: Wypełnię formularz i zapiszę  
+  * Then: Zlecenie zostaje zapisane i otrzymuje unikalny numer  
+* **WF-ZL-02 (Alternatywny)**  
+  * Given: Brak wymaganych danych  
+  * When: Próba zapisu  
+  * Then: System wyświetla komunikat o błędzie
 
-### **4.3. Zarządzanie zasobami (Administrator)**
+### **4.2. Priorytetyzacja wymagań**
 
-**Historyjka użytkownika:**
-
-Jako administrator, chcę dodawać i edytować zasoby, aby system odzwierciedlał aktualny stan infrastruktury.
-
-**Kryteria akceptacji:**
-
-* **WF-ADM-01:** Administrator może dodać nowy zasób.
-* **WF-ADM-02:** Administrator może zablokować zasób na czas serwisu.
-* **WF-ADM-03:** Administrator może edytować status zasobu.
-
-### **4.4. Priorytetyzacja wymagań**
-
-* Must Have: rezerwacja, anulowanie, zarządzanie zasobami.
-* Should Have: rezerwacje cykliczne, powiadomienia e-mail.
-* Could Have: eksport rezerwacji do kalendarza google.
-* Won’t Have: płatności.
-
-## **5\. Atrybuty Jakościowe**
-
-
-* Jakość wykonania
-  * Wydajność (Performance):
-    * WNF-WYD-01: czas odpowiedzi ≤ 1.5 s przy 200 użytkownikach.
-
-  * Dostępność (Availability):
-    * WNF-DOST-01: dostępność 99.8% rocznie.
-
-  * Bezpieczeństwo (Security):
-    * WNF-BEZ-01: hasła hashowane bcrypt.
-    * WNF-BEZ-02: automatyczne wylogowanie po 30 min.
-
-  * Skalowalność (Scalability):
-    * WNF-SKAL-01: obsługa 5000 jednoczesnych sesji.
-
-* Jakość projektu
-  * Modyfikowalność (Modifiability):
-    * WNF-MOD-01: możliwość dodania nowego typu zasobu bez zmiany istniejącego kodu.
-  * Przenośność (Portability):
-    * WNF-PRZ-01: uruchomienie przez docker-compose up.
-
-### **5.1. Priorytetyzacja atrybutów jakościowych**
-
-1. Wydajność – Must Have
-2. Bezpieczeństwo – Must Have
-3. Skalowalność – Should Have
-
-
-## **6\. Odkrywanie i Analiza Wymagań**
-
-### **6.1. Analiza porównawcza**
-
-Analizie poddano systemy Planbook, Booked Scheduler oraz uczelniane rozwiązania wewnętrzne. Zidentyfikowano jako kluczowe przewagi: prostotę UI, widok kalendarza oraz automatyczne wykrywanie konfliktów. Braki konkurencji obejmują skomplikowaną konfigurację i brak rezerwacji cyklicznych.
+* Zarządzanie zleceniem – Wysoki  
+* Powiadomienia – Średni  
+* Raporty – Średni
 
 ---
