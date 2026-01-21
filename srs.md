@@ -1,54 +1,41 @@
 # **Specyfikacja Wymagań Oprogramowania (SRS)**
 
-## **System Rezerwacji Zasobów Uczelnianych (SRZU)**
-
-**Wersja:** 1.0
-
----
-
 ## **1\. Wstęp**
 
 ### **1.1. Cel dokumentu**
 
-Celem niniejszego dokumentu jest kompletne, jednoznaczne i weryfikowalne zdefiniowanie wymagań dla Systemu Rezerwacji Zasobów Uczelnianych (SRZU). Dokument pełni rolę kontraktu pomiędzy interesariuszami biznesowymi a zespołem wytwórczym i stanowi podstawę do projektowania, implementacji, testowania oraz walidacji systemu.
+Celem niniejszego dokumentu jest przedstawienie kompletnej Specyfikacji Wymagań Oprogramowania (SRS) dla systemu **Pogrzebalia v1.0** – systemu informatycznego wspierającego zarządzanie domem pogrzebowym. Dokument stanowi podstawę do projektowania, implementacji, testów oraz walidacji systemu i jest przeznaczony dla interesariuszy biznesowych, zespołu projektowego oraz prowadzącego zajęcia.
 
 ### **1.2. Wizja, zakres i cele produktu**
 
-**Wizja:**
-Stworzenie jednego, centralnego systemu umożliwiającego studentom i pracownikom uczelni szybki, bezkonfliktowy i przejrzysty dostęp do rezerwacji sal, laboratoriów oraz sprzętu dydaktycznego.
+**Wizja:**  
+Stworzenie nowoczesnego, empatycznego i bezpiecznego systemu informatycznego, który usprawni obsługę klientów domu pogrzebowego oraz uporządkuje procesy organizacyjne.
 
-**Zakres systemu:**
-System SRZU umożliwia:
+**Zakres systemu:**  
+System umożliwia kompleksowe zarządzanie usługami pogrzebowymi, dokumentacją, personelem, rezerwacjami ceremonii oraz kontaktami z klientami.
 
-* przegląd i wyszukiwanie zasobów uczelnianych,
-* rezerwację zasobów w określonych przedziałach czasowych,
-* zarządzanie rezerwacjami przez użytkowników,
-* administracyjne zarządzanie zasobami i ich dostępnością,
-* kontrolę konfliktów rezerwacyjnych.
+**Cele biznesowe i KPIs:**
 
-**Cele biznesowe i użytkowe (KPIs):**
-
-* średni czas wykonania rezerwacji ≤ 2 minuty,
-* 0 konfliktów czasowych w zatwierdzonych rezerwacjach,
-* ≥ 90% pozytywnych ocen użyteczności w ankiecie użytkowników,
-* wyelimowanie zgłoszeń mailowych dotyczących rezerwacji.
+* Skrócenie czasu obsługi klienta o 30% (średni czas od zgłoszenia do podpisania umowy)  
+* Zmniejszenie liczby błędów w dokumentacji o 50%  
+* Możliwość obsługi do 100 aktywnych zleceń miesięcznie
 
 **Poza zakresem:**
 
-* obsługa płatności, rozliczeń i ubezpieczeń zasobów,
-* automatyczne planowanie zajęć dydaktycznych,
-* integracja z systemami zewnętrznych instytucji spoza uczelni.
+* Prowadzenie księgowości pełnej  
+* Zarządzanie cmentarzem  
+* Obsługa krematoriów zewnętrznych
 
 ### **1.3. Definicje, akronimy i skróty**
 
-* **Zasób** – sala, laboratorium lub sprzęt podlegający rezerwacji.
-* **Rezerwacja** – przydzielenie zasobu użytkownikowi na określony czas.
-* **Konflikt rezerwacji** – nakładające się czasowo rezerwacje tego samego zasobu.
-* **SRZU** – System Rezerwacji Zasobów Uczelnianych.
+* **SRS** – Specyfikacja Wymagań Oprogramowania  
+* **RODO** – Rozporządzenie o Ochronie Danych Osobowych  
+* **Klient** – osoba zlecająca usługę pogrzebową  
+* **Zlecenie** – komplet informacji dotyczących jednej ceremonii
 
 ### **1.4. Przegląd dokumentu**
 
-Rozdział 2 zawiera ogólny opis systemu. Rozdział 3 opisuje interfejsy zewnętrzne. Rozdział 4 definiuje wymagania funkcjonalne wraz z kryteriami akceptacji. Rozdział 5 opisuje wymagania niefunkcjonalne. Rozdział 6 prezentuje analizę porównawczą. Dodatki zawierają modele analityczne, persony oraz otwarte kwestie.
+Rozdział 2 opisuje ogólną charakterystykę systemu. Rozdziały 3–5 zawierają wymagania funkcjonalne i niefunkcjonalne. Rozdział 6 opisuje analizę porównawczą rynku.
 
 ---
 
@@ -56,39 +43,33 @@ Rozdział 2 zawiera ogólny opis systemu. Rozdział 3 opisuje interfejsy zewnęt
 
 ### **2.1. Główne funkcje produktu**
 
-* Przegląd i filtrowanie zasobów.
-* Rezerwacja jednorazowa i cykliczna.
-* Anulowanie i modyfikacja rezerwacji.
-* Blokowanie zasobów (serwis, awarie).
-* Zarządzanie użytkownikami i uprawnieniami.
+* Zarządzanie zleceniami pogrzebowymi  
+* Rejestracja i obsługa klientów  
+* Planowanie ceremonii  
+* Zarządzanie personelem  
+* Generowanie dokumentów  
+* Powiadomienia i przypomnienia
 
 ### **2.2. Klasy użytkowników**
 
-* **Student** – sprzęt do celów naukowych.
-* **Pracownik dydaktyczny** – rezerwuje sale i laboratoria na zajęcia oraz projekty.
-* **Administrator** – zarządza zasobami, regułami i dostępnością systemu.
+* **Administrator** – zarządza systemem i użytkownikami  
+* **Pracownik biura** – obsługa klientów i dokumentów  
+* **Pracownik terenowy** – wgląd w harmonogram ceremonii
+
+**Persona – Pracownik biura:**  
+Anna, 38 lat, pracuje w domu pogrzebowym, zależy jej na szybkim i bezbłędnym przygotowaniu dokumentów.
 
 ### **2.3. Ograniczenia projektowe i implementacyjne**
 
-**Technologiczne:**
-
-* aplikacja webowa dostępna w przeglądarkach Chrome, Firefox, Edge,
-* architektura klient–serwer.
-
-**Organizacyjne:**
-
-* realizacja projektu w czasie jednego semestru,
-* zespół projektowy 3 osoby.
-
-**Prawne i środowiskowe:**
-
-* zgodność z RODO,
-* zgodność z regulaminem uczelni.
+**Technologiczne:** aplikacja webowa, baza PostgreSQL  
+**Organizacyjne:** termin oddania – koniec semestru  
+**Prawne:** pełna zgodność z RODO
 
 ### **2.4. Założenia projektowe**
 
-* użytkownicy posiadają aktywne konto uczelniane,
-* dostęp do systemu odbywa się z sieci uczelnianej lub przez VPN.
+* Użytkownicy posiadają podstawowe umiejętności obsługi komputera  
+* System dostępny przez przeglądarkę  
+* Dostęp do infrastruktury AWS lub Azure Microsoft
 
 ---
 ## **3\. Wymagania dotyczące interfejsów zewnętrznych**
